@@ -1,3 +1,10 @@
-port: ':8080'
-DATABASE_URL:
-  root:root@tcp(127.0.0.1:3306)/db?charset=utf8mb4&parseTime=True&loc=Local
+port: ':8081'
+database_config:
+  host: localhost
+  user: postgres
+  password: postgres
+  dbname: db
+  port: 1234
+  sslmode: disable
+
+

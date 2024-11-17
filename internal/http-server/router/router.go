@@ -2,14 +2,20 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
+	"gopaste/internal/http-server/controllers/user/addUser"
+	"gopaste/internal/service/user"
 )
 
-func New() *gin.Engine {
+func New(userService *user.Service) *gin.Engine {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	r.Group("/v1")
+	{
+		r.Group("/user")
+		{
+			r.POST("user/add", addUser.New(userService))
+		}
+
+	}
+
 	return r
 }
